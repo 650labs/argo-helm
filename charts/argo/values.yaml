@@ -1,14 +1,19 @@
 imagesNamespace: argoproj
 controllerImage: workflow-controller
-uiImage: argoui
 executorImage: argoexec
 imagesTag: v2.1.0-alpha1
 controllerName: workflow-controller
 
 # Enables ability to SSH into pod using web UI
 enableWebConsole: false
-uiName: ui
-uiServiceType: LoadBalancer
+ui:
+  image: argoui
+  serviceType: LoadBalancer
+  ingress:
+    enabled: false
+    annotations: {}
+    hosts: []
+    tls: []
 crdVersion: v1alpha1
 
 # If set to true then chart set controller instance id to release name
